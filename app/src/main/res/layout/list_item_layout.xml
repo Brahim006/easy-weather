@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    android:id="@+id/cardView">
+
+    <!-- LinearLayout para la distribución de elementos interna -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_city_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/default_city_name"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <!-- Distribución para la temperatura y las imágenes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <GridLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:columnCount="2"
+                android:rowCount="4">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:fontFamily="monospace"
+                    android:text="@string/temperature"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/text_temp"
+                    android:layout_gravity="center"
+                    android:text="@string/default_temperature"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:fontFamily="monospace"
+                    android:text="@string/min_temp"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/text_min_temp"
+                    android:layout_gravity="center"
+                    android:text="@string/default_temperature"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:fontFamily="monospace"
+                    android:text="@string/max_temp"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/text_max_temp"
+                    android:layout_gravity="center"
+                    android:text="@string/default_temperature"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:fontFamily="monospace"
+                    android:text="@string/termic_sensation"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/text_termic_sensation"
+                    android:layout_gravity="center"
+                    android:text="@string/default_temperature"
+                    android:textAlignment="center" />
+
+            </GridLayout>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@android:drawable/btn_dialog" />
+
+        </LinearLayout>
+        <!-- Fin distribución para la temperatura y la imagen -->
+
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="@string/description_test" />
+
+        <!-- Layout para la distribución de la presión y viento -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="@string/pressure" />
+
+            <TextView
+                android:id="@+id/text_pressure"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_pressure" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="@string/wind" />
+
+            <TextView
+                android:id="@+id/text_wind"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/default_wind" />
+
+        </LinearLayout>
+
+    </LinearLayout> <!-- Fin LinearLayout interno -->
+
+</androidx.cardview.widget.CardView>
