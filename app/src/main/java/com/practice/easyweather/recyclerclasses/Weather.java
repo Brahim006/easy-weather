@@ -6,7 +6,8 @@ package com.practice.easyweather.recyclerclasses;
 public class Weather {
 
     private String cityName, weatherDescription, imageID;
-    private int temp, minTemp, maxTemp, termicSensation, pressure, wind;
+    private int temp, minTemp, maxTemp, termicSensation, pressure;
+    private double wind;
 
     // Setters y getters
 
@@ -66,19 +67,19 @@ public class Weather {
         this.pressure = pressure;
     }
 
-    public int getWind() {
-        return wind;
-    }
-
-    public void setWind(int wind) {
-        this.wind = wind;
-    }
-
     public String getImageID() {
         return imageID;
     }
 
     public void setImageID(String imageID) {
         this.imageID = imageID;
+    }
+
+    public double getWind() {
+        return wind;
+    }
+
+    public void setWind(double wind) {
+        this.wind = wind;
     }
 }
