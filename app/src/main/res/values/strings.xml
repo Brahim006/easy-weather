@@ -22,11 +22,12 @@
     <string name="default_wind">50 km/h</string>
 
     <!-- Menu -->
-    <string name="menu_add">Añadir ciudad</string>
+    <string name="about">Acerca de</string>
     
     <!-- Segunda actividad -->
     <string name="city_add_title">Añadir ciudad</string>
     <string name="city_add_hint">Nombre de la ciudad</string>
     <string name="city_add_button">Añadir</string>
+    <string name="wrong_city_name">Debe ingresar un nombre válido.</string>
     
 </resources>

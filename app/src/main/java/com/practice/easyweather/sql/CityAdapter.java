@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
+/**
+ * Adaptador que provee métodos de conveniencia para el acceso y manipulación de
+ * la base de datos.
+ */
 public class CityAdapter {
 
     private DBHelper dbHelper;
@@ -15,32 +19,24 @@ public class CityAdapter {
 
     public CityAdapter(Context context){
         this.context = context;
+        openDB();
     }
 
-    public void openDB(){
+    private void openDB(){
         dbHelper = new DBHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
-    public void closeDB(){
+    @Override
+    protected void finalize() throws Throwable {
         db.close();
+        super.finalize();
     }
 
-    public String getCityNameByID(int id){
-
-        Cursor c = db.query(DBHelper.TABLE_NAME,
-                new String[]{DBHelper.COLUMN_NAME},
-                "id = ?",new String[]{String.valueOf(id)},
-                null, null,null);
-        // Si hubo coincidencias
-        if(c.moveToFirst()){
-            int index = c.getColumnIndex(DBHelper.COLUMN_NAME);
-            return c.getString(index);
-        } else
-            return null;
-
-    } // fin getCityNameById
-
+    /**
+     * Retorna todas las ciudades guardadas en la base de datos.
+     * @return Una colección ArrayList de Strings.
+     */
     public ArrayList<String> getAllCityNames(){
 
         Cursor c = db.query(DBHelper.TABLE_NAME,
@@ -64,6 +60,11 @@ public class CityAdapter {
 
     } // fin getAllCityNames
 
+    /**
+     * Inserta una nueva ciudad en la base de datos.
+     * @param cityName El nombre de la nueva ciudad.
+     * @return Un booleano informando el éxito de la operación.
+     */
     public boolean insertCityName(String cityName){
 
         ContentValues values = new ContentValues();
@@ -74,6 +75,11 @@ public class CityAdapter {
 
     } // fin insertCityName
 
+    /**
+     * Borra una ciudad de la base de datos.
+     * @param cityName El nombre de la ciudad a borrar.
+     * @return Un booleano informando el éxito de la operación.
+     */
     public boolean deleteCityName(String cityName){
 
         int code = db.delete(DBHelper.TABLE_NAME,
