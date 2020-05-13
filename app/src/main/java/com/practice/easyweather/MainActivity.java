@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
 
     public static final int CITY_NAME_RESULT = 1;
-    public static final String NEW_CITY_NAME = "new_city_name";
+    public static final String NEW_CITY_NAME = "new_city_name",
+                               PARCELABLE_ARRAY_KEY = "dataset";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,13 @@ public class MainActivity extends AppCompatActivity {
         db = new CityAdapter(getApplicationContext());
         cityNames = db.getAllCityNames();
         // Recursos del RecyclerView
-        dataSet = new ArrayList<>();
+
+        if(savedInstanceState == null){
+            dataSet = new ArrayList<>();
+        } else {
+            dataSet = savedInstanceState.getParcelableArrayList(PARCELABLE_ARRAY_KEY);
+        }
+
         weatherAdapter = new WeatherAdapter(dataSet);
         recyclerView.setAdapter(weatherAdapter);
 
@@ -113,4 +120,28 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // Métodos de persistencia de información de la instancia iniciada
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+        // Se encarga de guardar la colección con los objetos guardados de manera
+        // que al re-crear la actividad no sea necesario realizar la consolta
+        // al servicio de OpenWeather
+        outState.putParcelableArrayList(PARCELABLE_ARRAY_KEY,dataSet);
+
+    } // fin onSaveInstanceState
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restaura el dataSet. Este método es llamado inmediatamente después de
+        // onStart, por lo que la restauración no depende del método onCreate
+        if(dataSet == null){
+            dataSet = savedInstanceState.getParcelableArrayList(PARCELABLE_ARRAY_KEY);
+        }
+
+    } // fin onRestoreInstanceState
 }

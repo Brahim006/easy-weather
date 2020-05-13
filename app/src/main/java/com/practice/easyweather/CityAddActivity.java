@@ -1,5 +1,6 @@
 package com.practice.easyweather;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +18,7 @@ public class CityAddActivity extends AppCompatActivity {
 
     private EditText editCityName;
     private Button buttonCityName;
+    public static final String CITY_NAME_KEY = "city_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,4 +53,17 @@ public class CityAddActivity extends AppCompatActivity {
 
     } // fin onClickButtonCityAdd
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Simplemente se encarga de persistir el texto ingresado al EditText
+        // Para evitar que se borre al recrear la actividad
+        outState.putString(CITY_NAME_KEY,editCityName.getText().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        editCityName.setText(savedInstanceState.getString(CITY_NAME_KEY));
+    }
 }
