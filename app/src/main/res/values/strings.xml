@@ -21,8 +21,9 @@
     <string name="default_pressure">1013,25 hPa</string>
     <string name="default_wind">50 km/h</string>
 
-    <!-- Menu -->
+    <!-- Menúes -->
     <string name="about">Acerca de</string>
+    <string name="delete_city">Borrar de la lista</string>
     
     <!-- Segunda actividad -->
     <string name="city_add_title">Añadir ciudad</string>
