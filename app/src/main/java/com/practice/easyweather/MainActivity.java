@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.practice.easyweather.sql.*;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                                PARCELABLE_ARRAY_KEY = "dataset";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -61,6 +62,39 @@ public class MainActivity extends AppCompatActivity {
         }
 
         weatherAdapter = new WeatherAdapter(dataSet);
+
+        weatherAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                PopupMenu popupMenu = new PopupMenu(getApplicationContext(),v);
+                MenuInflater inflater = popupMenu.getMenuInflater();
+                inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
+
+                final int cardId = v.getId();
+
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        if(item.getItemId() == R.id.delete_city_item){
+
+                            String cityName = dataSet.get(cardId - 1).getCityName();
+                            // Borrado de la base de datos
+                            db.deleteCityName(cityName);
+                            // Borrado del dataSet
+                            dataSet.remove(cardId - 1);
+                            weatherAdapter.notifyDataSetChanged();
+
+                        }
+
+                        return true;
+                    }
+                });
+
+                popupMenu.show();
+            }
+        }); // fin setOnClickListener
+
         recyclerView.setAdapter(weatherAdapter);
 
         new WeaterColsultingTask().execute(cityNames);

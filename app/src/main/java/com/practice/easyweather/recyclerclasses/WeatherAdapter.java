@@ -16,10 +16,13 @@ import java.util.ArrayList;
 
 /**
  * Adaptador para la gestión de entrada y salidad de datos a la lista del RecyclerView.
+ * Es a la vez listener para eventos generados al clickear sus componentes.
  */
-public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherHolder> {
+public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherHolder>
+                            implements View.OnClickListener {
 
     ArrayList<Weather> dataSet;
+    private View.OnClickListener listener;
 
     /**
      * Genera un adaptador que se encarga de crear todos los items de la lista con
@@ -60,6 +63,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherH
         holder.textWind.setText(String.valueOf(weather.getWind()) + "km/h");
 
         holder.imageWeather.setImageResource(generateImageId(weather.getImageID()));
+
+        // Se le asigna un ID a cada cardview basado en su posición dentro del RecyclerView,
+        // pero s ele suma uno ya que el ID debe ser positivo y se quiere evitar conflictos con
+        // el primer elemento de la lista
+        holder.cardView.setId(position + 1);
+        holder.cardView.setOnClickListener(this);
 
     } // fin onBindViewHolder
 
@@ -117,6 +126,16 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherH
 
     } // fin generateImageId
 
+    @Override
+    public void onClick(View v) {
+        if(listener != null) listener.onClick(v);
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        // Recibe un listener externo
+        this.listener = listener;
+    }
+
     /*
      * Holder para la creación de cada Item
      */
@@ -127,7 +146,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherH
         ImageView imageWeather;
         CardView cardView;
 
-        public WeatherHolder(@NonNull View itemView) {
+        public WeatherHolder(@NonNull final View itemView) {
             super(itemView);
 
             // Inicialización de recursos
