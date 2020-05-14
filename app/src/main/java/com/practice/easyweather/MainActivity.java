@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             dataSet = new ArrayList<>();
         } else {
+            // Si hay una instancia guardada (se re-creó la actividad), recupera el dataSet
             dataSet = savedInstanceState.getParcelableArrayList(PARCELABLE_ARRAY_KEY);
         }
 
@@ -97,7 +98,12 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(weatherAdapter);
 
-        new WeaterColsultingTask().execute(cityNames);
+        // Ejecuta la búsqueda de datos desde internet sólo si es la primera vez que se inicia la
+        // actividad en esta instancia, caso omiso sólo se cargan los datos ya almacenados en el
+        // dataSet
+        if(savedInstanceState == null){
+            new WeaterColsultingTask().execute(cityNames);
+        }
 
     } // fin onCreate
 
