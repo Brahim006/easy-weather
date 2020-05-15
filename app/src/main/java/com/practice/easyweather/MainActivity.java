@@ -15,8 +15,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.practice.easyweather.sql.*;
 import com.practice.easyweather.recyclerclasses.*;
 import com.practice.easyweather.services.WeaterColsultingTask;
@@ -161,9 +163,12 @@ public class MainActivity extends AppCompatActivity {
                 coll.add(newCityName);
 
                 new WeaterColsultingTask().execute(coll);
-            } else if(requestCode == RESULT_CANCELED){
+            } else if(resultCode == RESULT_CANCELED){
 
                 soundPool.play(failSound,1,1,1,0,1);
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.wrong_city_name),
+                        Toast.LENGTH_LONG).show();
 
             }
 

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Easy Weather</string>
+
+    <!-- Strings para los items de la lista -->
+    <string name="temperature">Temperature:</string>
+    <string name="min_temp">Min Temp:</string>
+    <string name="max_temp">Max Temp:</string>
+    <string name="termic_sensation">Feels like:</string>
+
+    <string name="pressure">Pressure:</string>
+    <string name="wind">Wind:</string>
+
+    <!-- Valores por defecto para los campos de los items -->
+    <string name="default_city_name">City name</string>
+    <string name="default_temperature">25°</string>
+    <string name="description_test">Lorem ipsum dolor sit amet.</string>
+    <string name="default_pressure">1013,25 hPa</string>
+    <string name="default_wind">5 m/s</string>
+
+    <!-- Menúes -->
+    <string name="about">About</string>
+    <string name="delete_city">Delete from list</string>
+
+    <!-- Actividad para agregado de ciudades -->
+    <string name="city_add_title">Add city</string>
+    <string name="city_add_hint">City name</string>
+    <string name="city_add_button">Add</string>
+
+    <!-- Actividad de "Acerca de" -->
+    <string name="author">Created by Eduardo Brahim Alí</string>
+    <string name="github_link">Link to GitHub profile</string>
+    <string name="lnkedin_link">Link to LinkedIn profile</string>
+
+    <!-- Mensaje para el SnackBar -->
+    <string name="wrong_city_name">You must enter a valid name</string>
+
+</resources>

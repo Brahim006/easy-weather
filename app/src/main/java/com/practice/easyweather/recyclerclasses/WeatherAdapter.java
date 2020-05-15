@@ -60,7 +60,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherH
         holder.textTermicSensation.setText(String.valueOf(weather.getTermicSensation()) + "°");
         holder.textDescription.setText(weather.getWeatherDescription());
         holder.textPressure.setText(String.valueOf(weather.getPressure()) + "hPa");
-        holder.textWind.setText(String.valueOf(weather.getWind()) + "m/seg");
+        holder.textWind.setText(String.valueOf(weather.getWind()) + "m/s");
 
         holder.imageWeather.setImageResource(generateImageId(weather.getImageID()));
 
