@@ -21,7 +21,10 @@ import java.util.Locale;
 public class WeaterColsultingTask extends AsyncTask<ArrayList<String>,Integer,ArrayList<Weather>> {
 
     // Clave de acceso al servicio de OpenWeather
-    private static final String OPEN_WEATHER_KEY = "f1ab3298ed7153aac248f65ed2d00ccd";
+    private static final String OPEN_WEATHER_KEY = "f1ab3298ed7153aac248f65ed2d00ccd",
+            // Este es el JSON devuelto por el sistema de OpenWeather cuando se ingresa
+            // una ciudad inválida, usado para las comprobaciones
+            CITY_NOT_FOUND_JSON = "{\"cod\":\"404\",\"message\":\"city not found\"}";
 
     @Override
     protected void onPostExecute(ArrayList<Weather> weathers) {
@@ -59,7 +62,7 @@ public class WeaterColsultingTask extends AsyncTask<ArrayList<String>,Integer,Ar
                     is.close();
 
                     // Extracción de datos desde el archivo JSON
-                    if(!jsonFile.equals("")){
+                    if(!jsonFile.equals("") && !jsonFile.equals(CITY_NOT_FOUND_JSON)){
                         Weather weather = new Weather();
 
                         weather.setCityName(cityNames[0].get(i));
@@ -81,10 +84,16 @@ public class WeaterColsultingTask extends AsyncTask<ArrayList<String>,Integer,Ar
                         weather.setWind(windObject.getDouble("speed"));
 
                         ret.add(weather);
+                    } else {
+                        String exceptionMessage = "city_not_found";
+                        if(jsonFile.equals("")) exceptionMessage = "";
+                        throw new NullPointerException(exceptionMessage);
                     }
 
-                } else
-                    throw new NullPointerException();
+                } else {
+                    throw new NullPointerException("null_input");
+                }
+
 
             } // fin for
 

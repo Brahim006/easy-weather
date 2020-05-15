@@ -38,17 +38,18 @@ public class CityAddActivity extends AppCompatActivity {
 
         String cityName = editCityName.getText().toString();
 
+        // Intent para el envío del nombre de la ciudad
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra(MainActivity.NEW_CITY_NAME,cityName);
+
         if(!cityName.equals("")){ // Verifica un nombre válido
-            // Intent para el envío del nombre de la ciudad
-            Intent intent = new Intent(this,MainActivity.class);
-            intent.putExtra(MainActivity.NEW_CITY_NAME,cityName);
 
             setResult(RESULT_OK,intent);
             finish();
 
         } else {
-            Toast.makeText(this,getResources().getString(R.string.wrong_city_name),
-                    Toast.LENGTH_LONG);
+            setResult(RESULT_CANCELED,intent);
+            finish();
         }
 
     } // fin onClickButtonCityAdd

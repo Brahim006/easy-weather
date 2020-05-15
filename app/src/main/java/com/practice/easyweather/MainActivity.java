@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,14 +38,31 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
 
-    public static final int CITY_NAME_RESULT = 1;
+    public static final int CITY_NAME_RESULT = 1,
+                            SOUNDS_MAX_STREAMS = 1;
     public static final String NEW_CITY_NAME = "new_city_name",
                                PARCELABLE_ARRAY_KEY = "dataset";
+
+    // Generación de sonidos
+    public static SoundPool soundPool;
+    public static int pressedButtonSound, failSound, cardViewSound;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Inicialización del SoundPool y sus sonidos
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
+        soundPool = new SoundPool.Builder().setMaxStreams(SOUNDS_MAX_STREAMS)
+                                           .setAudioAttributes(audioAttributes)
+                                           .build();
+        pressedButtonSound = soundPool.load(getApplicationContext(),R.raw.press_button_sound,1);
+        failSound = soundPool.load(getApplicationContext(),R.raw.fail_button_sound,1);
+        cardViewSound = soundPool.load(getApplicationContext(),R.raw.cardview_sound,1);
 
         // Inicialización de recursos
         recyclerView = findViewById(R.id.recyclerView);
@@ -71,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 MenuInflater inflater = popupMenu.getMenuInflater();
                 inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
 
+                soundPool.play(cardViewSound,1,1,1,0,1);
+
                 final int cardId = v.getId();
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -78,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
 
                         if(item.getItemId() == R.id.delete_city_item){
+                            soundPool.play(pressedButtonSound,1,1,1,0,1);
 
                             String cityName = dataSet.get(cardId - 1).getCityName();
                             // Borrado de la base de datos
@@ -113,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onClickFloatingActionButton(View view){
 
+        soundPool.play(pressedButtonSound,1,1,1,0,1);
         Intent intent = new Intent(this,CityAddActivity.class);
         startActivityForResult(intent,CITY_NAME_RESULT);
 
@@ -128,6 +151,9 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == CITY_NAME_RESULT){
 
             if(resultCode == RESULT_OK){
+
+                soundPool.play(pressedButtonSound,1,1,1,0,1);
+
                 String newCityName = data.getStringExtra(NEW_CITY_NAME);
 
                 db.insertCityName(newCityName);
@@ -135,7 +161,12 @@ public class MainActivity extends AppCompatActivity {
                 coll.add(newCityName);
 
                 new WeaterColsultingTask().execute(coll);
+            } else if(requestCode == RESULT_CANCELED){
+
+                soundPool.play(failSound,1,1,1,0,1);
+
             }
+
         }
 
         super.onActivityResult(requestCode, resultCode, data);
@@ -155,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.menu_about:
+                soundPool.play(pressedButtonSound,1,1,1,0,1);
                 // Inicia la actividad de "Acerca de"
                 Intent intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
