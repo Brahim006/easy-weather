@@ -24,11 +24,16 @@
     <!-- Menúes -->
     <string name="about">Acerca de</string>
     <string name="delete_city">Borrar de la lista</string>
-    
-    <!-- Segunda actividad -->
+
+    <!-- Actividad para agregado de ciudades -->
     <string name="city_add_title">Añadir ciudad</string>
     <string name="city_add_hint">Nombre de la ciudad</string>
     <string name="city_add_button">Añadir</string>
     <string name="wrong_city_name">Debe ingresar un nombre válido.</string>
-    
+
+    <!-- Actividad de "Acerca de" -->
+    <string name="author">Creado por Eduardo Brahim Alí</string>
+    <string name="github_link">Link a GitHub</string>
+    <string name="lnkedin_link">Link a LinkedIn</string>
+
 </resources>
