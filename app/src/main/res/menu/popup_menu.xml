@@ -3,6 +3,8 @@
 
     <item
         android:id="@+id/delete_city_item"
-        android:title="@string/delete_city" />
+        android:enabled="true"
+        android:title="@string/delete_city"
+        android:visible="true" />
 
 </menu>

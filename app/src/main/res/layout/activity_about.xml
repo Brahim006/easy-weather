@@ -9,35 +9,36 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="@color/colorAccent"
+    android:background="@color/colorLightBlue"
     tools:context=".AboutActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
-        android:fontFamily="@font/amita"
-        android:text="@string/author"
         android:autoLink="web"
+        android:fontFamily="@font/suez_one"
+        android:textColor="@color/colorGrayFont"
+        android:text="@string/author"
         android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/amita"
+        android:fontFamily="@font/suez_one"
+        android:onClick="onClickLinkedInText"
         android:text="@string/lnkedin_link"
-        android:textSize="20sp"
-        android:onClick="onClickLinkedInText" />
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
-        android:fontFamily="@font/amita"
-        android:text="@string/github_link"
-        android:textSize="20sp"
         android:autoLink="web"
-        android:onClick="onClickGitHubText" />
+        android:fontFamily="@font/suez_one"
+        android:onClick="onClickGitHubText"
+        android:text="@string/github_link"
+        android:textSize="18sp" />
 
 </LinearLayout>

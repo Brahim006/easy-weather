@@ -13,10 +13,10 @@
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
-    <!-- Tema para la actividad de añadido de ciudades, la diferencia es que este tema oculta el
-         Action Bar-->
-    <style name="CityAddTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
+    <!-- Tema para las actividades tipo ventana -->
+    <style name="NoTitleDialog" parent="Theme.AppCompat.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="cornerRadius">20dp</item>
     </style>
 
 </resources>

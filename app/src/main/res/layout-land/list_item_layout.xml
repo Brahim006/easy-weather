@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:layout_margin="5dp"
+    android:layout_margin="15dp"
     android:id="@+id/cardView">
 
     <!-- LinearLayout para la distribución de elementos interna -->
@@ -20,7 +20,7 @@
             android:fontFamily="@font/suez_one"
             android:text="@string/default_city_name"
             android:textAlignment="center"
-            android:textSize="25sp" />
+            android:textSize="35sp" />
 
         <!-- Distribución para la temperatura y las imágenes -->
         <LinearLayout
@@ -40,53 +40,61 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/temperature"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/text_temp"
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/default_temperature"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/min_temp"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/text_min_temp"
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/default_temperature"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/max_temp"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/text_max_temp"
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/default_temperature"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/termic_sensation"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/text_termic_sensation"
                     android:layout_gravity="center"
                     android:fontFamily="@font/suez_one"
                     android:text="@string/default_temperature"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
             </GridLayout>
 
@@ -106,9 +114,9 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:fontFamily="@font/suez_one"
+            android:text="@string/description_test"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:text="@string/description_test" />
+            android:textSize="25sp" />
 
         <!-- Layout para la distribución de la presión y viento -->
 
@@ -123,8 +131,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/suez_one"
+                android:text="@string/pressure"
                 android:textAlignment="center"
-                android:text="@string/pressure" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/text_pressure"
@@ -132,15 +141,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/suez_one"
-                android:text="@string/default_pressure" />
+                android:text="@string/default_pressure"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/suez_one"
+                android:text="@string/wind"
                 android:textAlignment="center"
-                android:text="@string/wind" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/text_wind"
@@ -148,7 +160,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/suez_one"
-                android:text="@string/default_wind" />
+                android:text="@string/default_wind"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
         </LinearLayout>
 

@@ -22,10 +22,14 @@
         </activity>
         <activity
             android:name=".CityAddActivity"
-            android:theme="@style/CityAddTheme" />
+            android:theme="@style/NoTitleDialog" />
         <activity
             android:name=".AboutActivity"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+            android:theme="@style/NoTitleDialog" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

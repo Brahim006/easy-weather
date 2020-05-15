@@ -3,43 +3,48 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/colorAccent"
+    android:paddingHorizontal="10dp"
+    android:background="@color/colorLightBlue"
     tools:context=".CityAddActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
-        android:fontFamily="sans-serif-smallcaps"
+        android:fontFamily="@font/suez_one"
         android:text="@string/city_add_title"
-        android:textSize="25sp"
-        android:layout_gravity="center_horizontal"/>
+        android:textColor="@color/colorFullBlack"
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/editCityName"
         android:layout_width="298dp"
-        android:layout_height="43dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:fontFamily="sans-serif-smallcaps"
+        android:textCursorDrawable="@drawable/ic_ciadd_cursor"
+        android:fontFamily="@font/suez_one"
         android:hint="@string/city_add_hint"
+        android:textColorHint="@color/colorGrayFont"
         android:inputType="textPersonName"
-        android:layout_gravity="center_horizontal" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/buttonCityAdd"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/city_add_button"
-        android:onClick="onClickButtonCityAdd"
         android:layout_marginVertical="15dp"
-        android:textSize="20sp"
         android:background="@color/colorWhite"
-        android:textColor="@color/colorAccent"
-        android:layout_gravity="center_horizontal" />
+        android:fontFamily="@font/suez_one"
+        android:onClick="onClickButtonCityAdd"
+        android:text="@string/city_add_button"
+        android:textColor="@color/colorLightBlue"
+        android:padding="5dp"
+        android:textSize="20sp" />
 
 </LinearLayout>
