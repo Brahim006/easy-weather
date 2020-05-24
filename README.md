@@ -19,3 +19,5 @@ consultar el clima y actualizar el DataSet.
 
 El APK de la aplicación se encuentra en:
 <https://github.com/Brahim006/easy-weather/tree/master/app/build/outputs/apk/debug>
+
+Idiomas disponibles: Español, inglés y portugués (brasilero).
