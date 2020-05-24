@@ -1,1 +1,7 @@
-/build
+/src/test
+/src/androidTest
+/build/generated
+/build/intermediates
+/build/tmp
+/build/outputs/logs
+/build/outputs/apk/debug/output.json
